@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10 денежных упражнений</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/flipclock.css">
+
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|Roboto" rel="stylesheet">
+
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.scrollTo.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="js/flipclock/flipclock.min.js"></script>
+    <script src="js/flipclock/libs/prefixfree.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            countDown = function () {
+                var currentDate = Math.round(new Date() / 1000);
+
+                var clock = $('.clock').FlipClock({
+                    countdown: true,
+                    clockFace: 'MinuteCounter',
+                    callbacks: {
+                        init: function () {
+                            //store end date If it's not yet in cookies
+                            if (!$.cookie('endDate')) {
+                                // end date = current date + 1 minutes
+                                var endDate = Date.now() + 45 * 60 * 1000;
+
+                                // store end date in cookies
+                                $.cookie('endDate', Math.round(endDate / 1000));
+                            }
+                        },
+                        stop: function () {
+                            $('.block-clock').html("<h3 class='text-center'>Время действия предложения истекло!</h3>");
+                            $('.skidka').html("<a class=\"wirhout_dis yes\" href=\"http://www.dowlatow.ru/ak/ak_buy_goods.php?idg=1669\" target=\"_blank\">Да, я хочу получить этот вебинар</a>");
+                            //window.location = "http://integra.dowlatow.ru/egida/thanks"
+                        },
+                    }
+                });
+
+                /* counter will be at first 1 min if the user refresh the page the counter will
+                 be the difference between current and end Date, so like this counter can
+                 continue the countdown normally in case of refresh. */
+                var counter = $.cookie('endDate') - currentDate;
+
+                if (counter < 0) {
+                    $('.block-clock').html("<h3 class='text-center'>Время действия предложения истекло!</h3>");
+                    $('.skidka').html("<a class=\"wirhout_dis yes\" href=\"http://www.dowlatow.ru/ak/ak_buy_goods.php?idg=1669&dc=0L2VA\" target=\"_blank\">Заказать курс «Родители-Дети. Эмоции рулят. Кризис рождения</a>");
+                    //window.location = "http://integra.dowlatow.ru/egida/thanks"
+                }
+
+                clock.setTime(counter);
+                clock.setCountdown(true);
+
+                clock.start();
+            }
+
+            //reset button
+            $('#reset').click(function () {
+                $.removeCookie('endDate'); //removing end date from cookies
+                countDown(); //launch countdown function
+            });
+
+            //Lanching count down on ready
+            countDown();
+        });
+
+
+    </script>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <ul class="header-links">
+                    <li class="scroll-to" data-target=".problems-sub">Как избежать откатов</li>
+                    <li class="scroll-to" data-target=".benefits">О курсе</li>
+                    <li class="scroll-to" data-target=".benefits-results">Результаты</li>
+                </ul>
+            </div>
+            <div class="col-xs-6 text-right">
+                <p class="discount">
+                    <span class="yellow">максимальная скидка 50%</span><br>
+                    14 мин 59 сек
+                </p>
+                <a class="button-buy white">Заказать трансформацию</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="top">
+    <div class="container">
+        <div class="col-xs-11 col-xs-offset-1">
+            <h1 class="title-main">Благодарю вас за выбор<br>
+                10 денежных упражнений</h1>
+            <h2 class="top-title-sub yellow"><i>
+                Я знаю, как для вас важно быстро решить<br> проблемы с деньгами и выйти на<br> стабильный доход
+            </i>
+            </h2>
+
+        </div>
+        <div class="text-center">
+            <a href="#" class="scroll-to" data-target=".problems";><img src="images/down.png"></a>
+        </div>
+    </div>
+</section>
+
+<section class="problems" id="problems">
+    <div class="container">
+        <div class="col-xs-8 col-xs-offset-4">
+            <h2 class="problems-title yellow">Как избежать откатов</h2>
+            <p>
+                Когда начинаешь менять свою жизнь, случаются откаты… Сначала вроде получается (техники, упражнения), но
+                потом возникает сопротивление. Депрессия, головная боль, ничего не выходит.
+            </p>
+            <h3 class="problems-sub yellow text-center">Как избежать откатов и ускорить<br> повышение дохода в РАЗЫ?
+            </h3>
+            <p>
+                Помните нашумевший фильм «Матрица»? Мы сами не замечаем, что живем во сне, где нет денег:
+            </p>
+            <ul class="list-point">
+                <li>Родители в детстве говорили что-то негативное о деньгах</li>
+                <li>В вашем роду были сценарии потерь, нищеты, раскулачивания, банкротств</li>
+                <li>у вас есть ограничивающие убеждения о деньгах</li>
+                <li>денежные страхи</li>
+                <li>печальный опыт, куда ж без него…</li>
+            </ul>
+            <p>
+                И пока вы не взломаете свою матрицу, вы будете двигаться к росту доходов медленно. Вас будет отбрасывать
+                назад. Кто-то сойдет с дистанции, потому что начинать заново очень трудно.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="bonus">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="bonus-title yellow">Специальное предложение</h2>
+            </div>
+            <div class="col-xs-6">
+                <p>
+                    Я систематизировал свой опыт преодоления откатов и выхода на стабильный доход в <b>курсе &#171;Трансформация
+                    денежной матрицы&#187;.</b>
+                </p>
+                <p>
+                    Закажите курс «Трансформацию денежной матрицы» с невероятной скидкой только сейчас!
+                </p>
+                <div class="timer">
+                    <div class="clock"></div>
+                </div>
+                <a href="" class="button-buy">Оформить заказ</a>
+            </div>
+            <div class="col-xs-5">
+                <ul class="bonus-list text-center">
+                    <li>Только<br>
+                        один раз
+                    </li>
+                    <li>Действует в течение<br>
+                        15 минут
+                    </li>
+                    <li>Максимальная скидка<br>
+                        50%
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="benefits">
+    <div class="container">
+        <div class="benefits-container">
+            <div class="benefits-container-inner clearfix">
+                <h2 class="benefits-title">Что входит<br> в курс</h2>
+
+                <ul class="check-list pull-right">
+                    <li>Матричность нашего отношения к деньгам</li>
+                    <li>Законы, знание и выполнение которых даст возможность зарабатывать больше без откатов назад</li>
+                    <li>Причины, которые перекрывают рост ваших доходов, несмотря на все усилия</li>
+                    <li>Упражнение для развития денежного мышления - благодаря его выполнению вы начнете видеть возможности получения денег</li>
+                    <li>Упражнение &#171;Удвоение дохода&#187;: расширение денежного сознания - расширение ваших денежных потребностей
+                    </li>
+                    <li>Упражнение, которое помогает выйти из кризисной ситуации или застоя, дает ощущение внутреннего стержня, усиливает силу духа, возникает потенциал успеха
+                    </li>
+                    <li>Мудра начала - помогает выйти из кризисной ситуации или застоя, дает ощущение внутреннего
+                        стержня, усиливает силу духа, возникает потенциал успеха.
+                    </li>
+                    <li>Книга &#171;Трансформация денежной матрицы&#187;.</li>
+                    <li>Интеллект-карта по курсу &#171;Трансформация денежной матрицы&#187;.</li>
+                    <li>Чек-листы по курсу &#171;Трансформация денежной матрицы&#187;.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="call-to-action">
+    <div class="container">
+        <div class="col-xs-8">
+            <p class="call-to-action-text">Да! Я хочу &#171;Трансформацию денежной матрицы&#187;!</p>
+        </div>
+        <div class="col-xs-4 text-right">
+            <a class="button-buy">Оформить заказ</a>
+        </div>
+    </div>
+</section>
+
+<section class="benefits benefits-results">
+    <div class="container">
+        <div class="benefits-container">
+            <div class="benefits-container-inner clearfix">
+                <h2 class="benefits-title">Какие<br>результаты</h2>
+                <ul class="check-list pull-right">
+                    <li>Вы избежите откатов и <b>ускорите увеличение доходов</b> в РАЗЫ.</li>
+                    <li>Сделаете себе самый дорогой подарок в жизни – активируете свою Денежную матрицу на привлечение
+                        денег и возможностей.
+                    </li>
+                    <li>А это база для того, чтобы <b>всегда быть при деньгах.</b></li>
+                    <li>С вас начнется новое поколение богатых людей в вашем роду.</li>
+                    <li>Передадите денежное мышление детям и внукам – а это намного дороже, чем просто деньги. У них не
+                        будет проблем с деньгами в любых обстоятельствах.
+                    </li>
+                    <li>Получите мощную поддержку и опору от вашей Родовой структуры. Это придаст сил двигаться вперед,
+                        не останавливаться и не сдаваться в любой ситуации.
+                    </li>
+                    <li>Разовьете креативность в способах получения денег. Начнете <b>везде видеть возможности</b> их
+                        получения и просто
+                        не сможете сидеть спокойно, а будете их реализовывать. Это сделает вас независимым от кризисов и
+                        прочих негативных событий.
+                    </li>
+                    <li>Вы перестанете сливать деньги.</li>
+                    <li>Отпадет потребность в бесконечных долгах и кредитах.</li>
+                    <li>В вас проснутся желания и появится аппетит к большим жизненным целям.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="call-to-action">
+    <div class="container">
+        <div class="col-xs-7">
+            <p class="call-to-action-text">Получите такие же результаты!</p>
+        </div>
+        <div class="col-xs-5 text-right">
+            <a class="button-buy">Оформить заказ</a>
+        </div>
+    </div>
+</section>
+
+<section class="system">
+    <div class="container">
+        <div class="col-xs-9">
+            <h2><span class="yellow">Система мышления</span></h2>
+            <p>
+                &#171;Трансформация денежной матрицы&#187; — это СИСТЕМА, позволяющая любому человеку в любой жизненной
+                ситуации
+                решить проблемы с деньгами. Результат трансформации – новое денежное мышление и <b>быстрое увеличение
+                дохода</b>.<br>
+            </p>
+            <p>
+                Мышление, генерирующее деньги, невозможно отнять, украсть или потерять. Что бы ни происходило в вашей
+                жизни, окружении, стране — денежное мышление всегда будет с вами.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="price">
+    <div class="container">
+        <div class="col-xs-7 col-xs-offset-5">
+            <h2><span class="yellow">Сколько это стоит?</span></h2>
+            <p style="margin-bottom: 62px;"><span class="price-old yellow pull-left">3 800</span>
+                Вы же можете добавить его в корзину
+                сейчас <b>с 50% скидкой за 1900 рублей!</b>
+            </p>
+            <p>
+                Внимание! Скидка 50% на этот курс предоставляется только покупателям "10 денежных упражнений" только 1
+                раз — сейчас. Больше такой скидки не будет!
+            </p>
+            <p style="margin-bottom: 60px;">
+                Если вы хотите использовать этот <b>шанс ускорить увеличение доходов в РАЗЫ</b> — нажмите на кнопку,
+                чтобы добавить тренинг в комплект!
+            </p>
+            <div class="text-left">
+                <a class="button-buy">Добавить в комплект</a>
+                <i><b>1 900 рублей</b> (скидка 50%) </i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reviews">
+    <div class="container">
+        <h2 class="yellow text-center">Отзывы</h2>
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active text-center">
+                    <p class="item-text">
+                        У Вас всегда много практик, которые действительно работают. Бери, делай и меняй свою жизнь.
+                        Спасибо!
+                    </p>
+                    <div class="item-avatar">
+                        <img src="./images/slider-item1.jpg" alt="...">
+                    </div>
+                    <p class="item-author">
+                        Татьяна Татиус
+                    </p>
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <div class="item">
+                    <p class="item-text">
+                        Я благодарна вам, Константин! Обязательно воспользуюсь всеми техниками. Мне это очень
+                        необходимо. Спасибо!
+                    </p>
+                    <div class="item-avatar">
+                        <img src="./images/slider-item2.jpg" alt="...">
+                    </div>
+                    <p class="item-author text-center">
+                        Ирина Головина
+                    </p>
+                </div>
+
+                <div class="item">
+                    <p class="item-text">
+                        Да, Константин, Ваши техники эффективны. После Вашего вебинара мне прибавили зарплату и подарили новый айфон! Надеюсь,что продолжение следует. Надо только продолжать работать !
+                    </p>
+                    <div class="item-avatar">
+                        <img src="./images/slider-item3.jpg" alt="...">
+                    </div>
+                    <p class="item-author text-center">
+                        Ирина Головина
+                    </p>
+                </div>
+
+                <div class="item">
+                    <p class="item-text">
+                        Костя, Вы просто уникум и кладезь полезных, интересных знаний и реально действенных практик. Теперь и моя любимая фраза: "Счастье есть!!!". Желаю Вам Удачи везде и во всём!
+                    </p>
+                    <div class="item-avatar">
+                        <img src="./images/slider-item4.jpg" alt="...">
+                    </div>
+                    <p class="item-author text-center">
+                        Инна Корабельникова
+                    </p>
+                </div>
+
+                <div class="item">
+                    <p class="item-text">
+                        Я благодарна вам, Константин! Обязательно воспользуюсь всеми техниками. Мне это очень
+                        необходимо. Спасибо!
+                    </p>
+                    <div class="item-avatar">
+                        <img src="./images/slider-item5.jpg" alt="...">
+                    </div>
+                    <p class="item-author text-center">
+                        Ирина Головина
+                    </p>
+                </div>
+
+                <div class="item">
+                    <p class="item-text">
+                        Я благодарна вам, Константин! Обязательно воспользуюсь всеми техниками. Мне это очень
+                        необходимо. Спасибо!
+                    </p>
+                    <div class="item-avatar">
+                        <img src="./images/slider-item6.jpg" alt="...">
+                    </div>
+                    <p class="item-author text-center">
+                        Ирина Головина
+                    </p>
+                </div>
+
+
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <img src="images/arrow-left.png">
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <img src="images/arrow-right.png">
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="col-xs-6">
+            <p>© 2016 Константин Довлатов. Все права защищены.</p>
+        </div>
+        <div class="col-xs-6 text-right">
+            <p><a href="mailto:support@dowlatow.ru">support@dowlatow.ru</a>
+                <a href="">Политика конфеденциальности</a>
+            </p>
+        </div>
+    </div>
+    <div class="app">
+        <time id="countdown">25:00</time>
+        <div id="remainingSeconds"></div>
+        <div class="app-text"></div>
+    </div>
+</footer>
+
+<script>
+    var seconds = 10;
+    function secondPassed() {
+        var minutes = Math.round((seconds - 30)/60),
+                remainingSeconds = seconds % 60;
+
+        if (remainingSeconds < 10) {
+            remainingSeconds = "0" + remainingSeconds;
+        }
+
+        document.getElementById('countdown').innerHTML = minutes;
+        document.getElementById('remainingSeconds').innerHTML = remainingSeconds;
+        if (seconds == 0) {
+            clearInterval(countdownTimer);
+            document.getElementById('countdown').innerHTML = "00:00";
+            $('#countdown').css({color:"red"});
+            $('.app-text').html("<h3 class='text-center'>Время действия предложения истекло!</h3>");
+        } else {
+            seconds--;
+
+        }
+
+        if (seconds > 0) {
+            $('.app-text').html("<a href=\"http://www.dowlatow.ru/ak/ak_buy_goods.php?idg=1669\">время есть</a>");
+        }
+    }
+
+    var countdownTimer = setInterval('secondPassed()', 1000);
+</script>
+
+
+</body>
+</html>
